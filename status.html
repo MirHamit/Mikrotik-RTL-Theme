@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+	<meta name="robots" content="noindex">
+
+
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<title>وضعیت</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/font.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
+	<script language="JavaScript">
+		<!--
+		$(if advert-pending == 'yes')
+			var popup = '';
+		function focusAdvert() {
+			if (window.focus) popup.focus();
+		}
+		function openAdvert() {
+			popup = open('$(link-advert)', 'hotspot_advert', '');
+			setTimeout("focusAdvert()", 1000);
+		}
+		$(endif)
+		function openLogout() {
+			if (window.name != 'hotspot_status') return true;
+			open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+			window.close();
+			return false;
+		}
+		//-->
+	</script>
+
+
+</head>
+<body $(if advert-pending == 'yes')
+onLoad="openAdvert()"
+$(endif)
+>
+
+<div class="container">
+
+	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+		<div class="row">
+			<div class="iconmelon">
+				<img class="img-responsive" src="img/logo.png" alt="">
+			</div>
+		</div>
+
+		<div class="panel panel-default" >
+			<div class="panel-heading">
+				<div class="panel-title text-right">وضعیت !</div>
+			</div>
+
+			<div class="panel-body ltr" >
+
+				<div class="center-block row">
+
+					<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+
+						<div class="rtl">
+							$(if login-by == 'trial')
+							<p>
+								کاربر مهمان خوش آمدید .
+							</p>
+							$(elif login-by != 'mac')
+							<p>
+								کاربر $(username) خوش آمدید
+							</p>
+							$(endif)
+
+						</div>
+						<ul class="list-group ">
+							<li class="list-group-item">
+								<span class="pull-right rtl">آدرس IP :</span>
+								<span class="">$(ip)</span>
+							</li>
+							<li class="list-group-item">
+								<span class="pull-right rtl">مقدار مصرف - دانلود / آپلود :</span>
+								<span class="">$(bytes-in-nice) / $(bytes-out-nice)</span>
+							</li>
+							$(if session-time-left)
+							<li class="list-group-item rtl">
+								<span class="pull-right">مقدار زمان و باقیمانده :</span>
+								<span class="">$(uptime) / $(session-time-left)</span>
+							</li>
+							$(else)
+							<li class="list-group-item rtl">
+								<span class="pull-right">مقدار زمان :</span>
+								<span class="">$(uptime)</span>
+							</li>
+							$(endif)
+							$(if blocked == 'yes')
+							<li class="list-group-item rtl">
+								<span class="pull-right">وضعیت تبلیغات :</span>
+								<span class=""><a href="$(link-advert)" target="hotspot_advert">advertisement</a> الزامی </span>
+							</li>
+							$(elif refresh-timeout)
+							<li class="list-group-item rtl">
+								<span class="pull-right">به روز رسانی :</span>
+								<span class="">$(refresh-timeout)</span>
+							</li>
+							$(endif)
+						</ul>
+						$(if login-by-mac != 'yes')
+						<div class="col-sm-12 controls">
+							<button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-out"></i> خروج </button>
+						</div>
+						$(endif)
+					</form>
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<a href="http://tabriz.li" target="_blank"><p class="text-center" >طراحی توسط تبریزلی</p></a>
+		</div>
+
+	</div>
+</div>
+
+<div id="particles"></div>
+
+
+<script type="text/javascript" src="js/style.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex">
+
+	<title>ورود به اینترنت</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/font.css" rel="stylesheet">
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+
+	<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+		<div class="row">
+			<div class="iconmelon">
+				<img class="img-responsive" src="img/logo.png" alt="">
+			</div>
+		</div>
+
+		$(if chap-id)
+		<form name="sendin" action="$(link-login-only)" method="post">
+			<input type="hidden" name="username" />
+			<input type="hidden" name="password" />
+			<input type="hidden" name="dst" value="$(link-orig)" />
+			<input type="hidden" name="popup" value="true" />
+		</form>
+
+		<script type="text/javascript" src="/md5.js"></script>
+		<script type="text/javascript">
+			<!--
+			//-->
+			function doLogin() {
+				document.sendin.username.value = document.login.username.value;
+				document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+				document.sendin.submit();
+				return false;
+			}
+		</script>
+		$(endif)
+
+		<div class="text-center">
+
+				<p class="text-warning">
+					لطفا برای استفاده از اینترنت نام کاربری و رمز عبور خود را وارد کنید
+				</p>
+				<p class="text-success">
+					$(if trial == 'yes')و یا برای استفاده از اینترنت موقت <a style="color: #FF8080" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">کلیک</a> کنید.$(endif)
+				</p>
+
+		</div>
+
+		<div class="panel panel-default" >
+			<div class="panel-heading">
+				<div class="panel-title text-center">ورود به اینترنت</div>
+			</div>
+
+			<div class="panel-body" >
+
+				<form id="form" class="form-horizontal" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+					<input type="hidden" name="dst" value="$(link-orig)" />
+					<input type="hidden" name="popup" value="true" />
+
+					<div class="input-group ltr">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="user" class="form-control" dir="auto" name="username" type="text" value="$(username)" placeholder="نام کاربری">
+					</div>
+
+					<div class="input-group ltr">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="password" type="password" class="form-control" name="password" placeholder="رمز عبور">
+					</div>
+
+					<div class="form-group">
+						<!-- Button -->
+						<div class="col-sm-12 controls">
+							<button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> ورود </button>
+						</div>
+						<div class="row text-center col-sm-12 text-danger">
+							<hr>
+							$(if error)
+							<div class="">
+								$(error)
+							</div>
+							$(endif)
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<a href="http://www.mikrotik.com" target="_blank"><img class="center-block" src="img/logobottom.png" alt="mikrotik" /></a>
+			<a href="http://tabriz.li" target="_blank"><p class="text-center" >طراحی توسط تبریزلی</p></a>
+		</div>
+
+	</div>
+</div>
+
+<div id="particles"></div>
+
+
+<script type="text/javascript" src="js/style.js"></script>
+</body>
+</html>
